@@ -20,20 +20,13 @@ namespace pos
             InitializeComponent();
         }
 
-        private void toolStripButton2_Click(object sender, EventArgs e)
-        {
-            Itemadd IA = new Itemadd();
-            IA.ShowDialog();
-        }
-
-
         public void Loaditems()
         {
 
             try
             {
-                
-                dataGridView1.Controls.Clear();
+                dataGridView1.DataSource = null;
+                dataGridView1.Rows.Clear();
                 int i = 0;
                 con.Open();
                 string Qry = "SELECT * FROM items";
@@ -51,6 +44,7 @@ namespace pos
                 }  
                 dr.Close();
 
+                //Changing forcolor according to item status 
                 for (int r=0;r<i;r++)               
                 {   
                     if(dataGridView1[5, r].Value.ToString() == "Available")
@@ -58,7 +52,6 @@ namespace pos
                         dataGridView1[5, r].Style.ForeColor = Color.Green;
                         dataGridView1[5, r].Style.SelectionForeColor = Color.Green;
                     }
-
                     else
                     {
                         dataGridView1[5, r].Style.ForeColor = Color.Red;
@@ -80,6 +73,11 @@ namespace pos
 
         }
 
+        private void Itemlist_Load(object sender, EventArgs e)
+        {
+            Loaditems();
+        }
+
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             var f1 = Application.OpenForms.OfType<Form1>().FirstOrDefault();
@@ -87,9 +85,74 @@ namespace pos
             this.Dispose();
         }
 
-        private void Itemlist_Load(object sender, EventArgs e)
+        private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            Loaditems();
+            Itemadd IA = new Itemadd();
+            IA.SaveEnabled();
+            IA.ShowDialog();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colname = dataGridView1.Columns[e.ColumnIndex].Name.ToString();
+            if (colname == "colEdit")
+            {
+                string id = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string name = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string price = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
+                string cat = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
+                string st = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
+                   
+                Itemadd IA = new Itemadd
+                    {
+                        passname = name,
+                        passprice = price,
+                        passcat = cat,
+                        passst = st,
+                        passid = id
+                    };
+                IA.UpdateEnabled();
+                IA.ShowDialog();
+            }
+            
+            if (colname == "colDel")
+            {
+                string Qry = "delete from items where Id=@id and item_name=@name";
+                SqlCommand cmd = new SqlCommand(Qry, con);
+                var r = MessageBox.Show("You are about to delete product '" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() + "' from the database.\n\nAre you sure ? ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                try
+                {
+                    if (r == DialogResult.Yes)
+                    {
+                        con.Open();
+                        cmd.Parameters.AddWithValue("@name", dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString());
+                        cmd.Parameters.AddWithValue("@id", int.Parse(dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString()));
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Product Deleted Successfully", "Confirm Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                finally
+                {
+                    con.Close();
+                    if (r == DialogResult.Yes)
+                    {
+                        Loaditems();
+                    }
+
+                }
+
+
+
+            }
+
+
+
         }
     }
 

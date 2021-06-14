@@ -123,4 +123,32 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 21</value>
   </metadata>
+  <metadata name="ep.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>326, 21</value>
+  </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="ep.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA
+        AAAAAAAAPFryADxa8gA8WvIhPFrywzxa8v88WvL/PFbw/zk55v85NeT/OTXk/zk15MU5NuQiOTXkADk7
+        5gAAAAAAPFryADxa8gA8WvIdPFrysjxa8v88WvL/PFry/zxV8P85Oeb/OTXk/zk15P85NeT/OTXktDk2
+        5B45NeQAOTvmADxa8gA8WvIdPFryszxa8v88WvL/PFry/zxa8v87VfD/OTnm/zk05P85NeT/OTXk/zk1
+        5P85NeS1OTbkHjk15AA8WvIhPFrysjxa8v88WvL/PFry/zxa8v9AXfL/kp3s/5CJ4P89OeT/OTXk/zk1
+        5P85NeT/OTXk/zk15LM5NuQiPFrywzxa8v48WvL/PFry/zxa8v87WfL/RmLy/8rL6f/Jvdz/Qz7j/zg0
+        5P85NeT/OTXk/zk15P85NeT+OTXkxDxa8v88WvL/PFry/zxa8v88WvL/PFry/zxa8v9Tae//UU/k/zk1
+        5P85NeT/OTXk/zk15P85NeT/OTXk/zk15P88WvL/PFry/zxa8v88WvL/PFry/zxa8v88WvL/eYjt/3dy
+        4v85NeT/OTXk/zk15P85NeT/OTXk/zk15P85NeT/PFry/zxa8v88WvL/PFry/zxa8v88WvL/Plzy/8HE
+        6f/AtN3/Ozfk/zk15P85NeT/OTXk/zk15P85NeT/OTXk/zxa8v88WvL/PFry/zxa8v88WvL/PFry/0Jf
+        8v/LzOn/yb7c/z874/85NeT/OTXk/zk15P85NeT/OTXk/zk15P88WvL/PFry/zxa8v88WvL/PFry/ztZ
+        8v9HY/L/1dTo/9PH2/9EP+P/ODTk/zk15P85NeT/OTXk/zk15P85NeT/PFry/zxa8v88WvL/PFry/zxa
+        8v87WfL/TWfx/97b6P/cz9r/SkXj/zg05P85NeT/OTXk/zk15P85NeT/OTXk/zxa8sM8WvL+PFry/zxa
+        8v88WvL/Olny/1Rt8f/o4+j/59na/1JM4v83NOT/OTXk/zk15P85NeT/OTXk/jk15MQ8WvIhPFrysjxa
+        8v88WvL/PFry/ztZ8v9LZvH/q7Hr/6mg3v9JROP/ODTk/zk15P85NeT/OTXk/zk15LM5NuQiPFryADxa
+        8h08WvKzPFry/zxa8v88WvL/PFry/z1W8P86Oub/OTXk/zk15P85NeT/OTXk/zk15LU5NuQeOTXkADxa
+        8gA8WvIAPFryHTxa8rI8WvL/PFry/zxa8v88VfD/OTnm/zk15P85NeT/OTXk/zk15LQ5NuQeOTXkADo7
+        5gAAAAAAPFryADxa8gA8WvIhPFrywzxa8v88WvL/PFbw/zk55v85NeT/OTXk/zk15MU5NuQiOTXkADo7
+        5gAAAAAA4AcAAMADAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAB
+        AADAAwAA4AcAAA==
+</value>
+  </data>
 </root>

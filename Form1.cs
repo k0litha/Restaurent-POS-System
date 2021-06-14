@@ -68,10 +68,11 @@ namespace pos
                     price.BackColor = Color.FromArgb(28, 28, 28);
                     price.ForeColor = Color.White;
 
-                    price.Width = 50;
+                    price.Width = 60;
+                    price.Height = 18;
                     price.TextAlign = ContentAlignment.MiddleCenter;
 
-                    //add name label 
+                    //add name label  
                     name = new Label();
                     name.Text = dr["item_name"].ToString();
                     name.BackColor = Color.FromArgb(28, 28, 28);

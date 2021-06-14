@@ -37,6 +37,7 @@ namespace pos
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelBar = new System.Windows.Forms.Panel();
+            this.CLOSE = new System.Windows.Forms.Button();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBottom = new System.Windows.Forms.Panel();
             this.button5 = new System.Windows.Forms.Button();
@@ -51,7 +52,6 @@ namespace pos
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column6 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.CLOSE = new System.Windows.Forms.Button();
             this.panelBar.SuspendLayout();
             this.panelBottom.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -66,6 +66,17 @@ namespace pos
             this.panelBar.Size = new System.Drawing.Size(1400, 42);
             this.panelBar.TabIndex = 0;
             // 
+            // CLOSE
+            // 
+            this.CLOSE.BackColor = System.Drawing.SystemColors.ActiveBorder;
+            this.CLOSE.Location = new System.Drawing.Point(1311, 0);
+            this.CLOSE.Name = "CLOSE";
+            this.CLOSE.Size = new System.Drawing.Size(75, 39);
+            this.CLOSE.TabIndex = 0;
+            this.CLOSE.Text = "close";
+            this.CLOSE.UseVisualStyleBackColor = false;
+            this.CLOSE.Click += new System.EventHandler(this.CLOSE_Click);
+            // 
             // flowLayoutPanel1
             // 
             this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -73,9 +84,10 @@ namespace pos
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoScrollMinSize = new System.Drawing.Size(3, 3);
             this.flowLayoutPanel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 103);
+            this.flowLayoutPanel1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(27, 91);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(586, 554);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(586, 541);
             this.flowLayoutPanel1.TabIndex = 1;
             // 
             // panelBottom
@@ -187,7 +199,7 @@ namespace pos
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle7;
             this.dataGridView1.EnableHeadersVisualStyles = false;
-            this.dataGridView1.Location = new System.Drawing.Point(680, 103);
+            this.dataGridView1.Location = new System.Drawing.Point(725, 91);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.RowHeadersWidth = 51;
@@ -250,17 +262,6 @@ namespace pos
             this.Column6.MinimumWidth = 6;
             this.Column6.Name = "Column6";
             this.Column6.Width = 125;
-            // 
-            // CLOSE
-            // 
-            this.CLOSE.BackColor = System.Drawing.SystemColors.ActiveBorder;
-            this.CLOSE.Location = new System.Drawing.Point(1311, 0);
-            this.CLOSE.Name = "CLOSE";
-            this.CLOSE.Size = new System.Drawing.Size(75, 39);
-            this.CLOSE.TabIndex = 0;
-            this.CLOSE.Text = "close";
-            this.CLOSE.UseVisualStyleBackColor = false;
-            this.CLOSE.Click += new System.EventHandler(this.CLOSE_Click);
             // 
             // Form1
             // 
