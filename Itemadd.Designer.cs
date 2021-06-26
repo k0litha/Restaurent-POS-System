@@ -51,7 +51,6 @@ namespace pos
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.button3 = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
@@ -61,7 +60,7 @@ namespace pos
             // lblItemcat
             // 
             this.lblItemcat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemcat.Location = new System.Drawing.Point(23, 107);
+            this.lblItemcat.Location = new System.Drawing.Point(23, 115);
             this.lblItemcat.Name = "lblItemcat";
             this.lblItemcat.Size = new System.Drawing.Size(130, 23);
             this.lblItemcat.TabIndex = 3;
@@ -70,7 +69,7 @@ namespace pos
             // lblItemname
             // 
             this.lblItemname.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemname.Location = new System.Drawing.Point(23, 67);
+            this.lblItemname.Location = new System.Drawing.Point(23, 70);
             this.lblItemname.Name = "lblItemname";
             this.lblItemname.Size = new System.Drawing.Size(112, 23);
             this.lblItemname.TabIndex = 4;
@@ -81,21 +80,21 @@ namespace pos
             this.textBoxName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxName.Location = new System.Drawing.Point(175, 67);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(228, 23);
+            this.textBoxName.Size = new System.Drawing.Size(174, 23);
             this.textBoxName.TabIndex = 5;
             // 
             // textBoxPrice
             // 
             this.textBoxPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPrice.Location = new System.Drawing.Point(175, 149);
+            this.textBoxPrice.Location = new System.Drawing.Point(175, 158);
             this.textBoxPrice.Name = "textBoxPrice";
-            this.textBoxPrice.Size = new System.Drawing.Size(228, 23);
+            this.textBoxPrice.Size = new System.Drawing.Size(174, 23);
             this.textBoxPrice.TabIndex = 8;
             // 
             // lblItemprice
             // 
             this.lblItemprice.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblItemprice.Location = new System.Drawing.Point(23, 149);
+            this.lblItemprice.Location = new System.Drawing.Point(23, 161);
             this.lblItemprice.Name = "lblItemprice";
             this.lblItemprice.Size = new System.Drawing.Size(112, 23);
             this.lblItemprice.TabIndex = 7;
@@ -114,7 +113,7 @@ namespace pos
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(713, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(609, 35);
             this.toolStrip1.TabIndex = 10;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -143,7 +142,7 @@ namespace pos
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(472, 233);
+            this.button1.Location = new System.Drawing.Point(384, 252);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(196, 27);
             this.button1.TabIndex = 11;
@@ -156,10 +155,10 @@ namespace pos
             this.comboBoxCat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxCat.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxCat.FormattingEnabled = true;
-            this.comboBoxCat.Location = new System.Drawing.Point(175, 108);
+            this.comboBoxCat.Location = new System.Drawing.Point(175, 112);
             this.comboBoxCat.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxCat.Name = "comboBoxCat";
-            this.comboBoxCat.Size = new System.Drawing.Size(194, 24);
+            this.comboBoxCat.Size = new System.Drawing.Size(174, 24);
             this.comboBoxCat.TabIndex = 12;
             // 
             // btnSave
@@ -168,7 +167,7 @@ namespace pos
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(114, 233);
+            this.btnSave.Location = new System.Drawing.Point(264, 252);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(85, 27);
             this.btnSave.TabIndex = 13;
@@ -184,16 +183,16 @@ namespace pos
             this.comboBoxSt.Items.AddRange(new object[] {
             "Available",
             "Unavailable"});
-            this.comboBoxSt.Location = new System.Drawing.Point(175, 186);
+            this.comboBoxSt.Location = new System.Drawing.Point(175, 203);
             this.comboBoxSt.Margin = new System.Windows.Forms.Padding(2);
             this.comboBoxSt.Name = "comboBoxSt";
-            this.comboBoxSt.Size = new System.Drawing.Size(228, 24);
+            this.comboBoxSt.Size = new System.Drawing.Size(174, 24);
             this.comboBoxSt.TabIndex = 17;
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(23, 186);
+            this.label1.Location = new System.Drawing.Point(23, 206);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(130, 23);
             this.label1.TabIndex = 16;
@@ -205,7 +204,7 @@ namespace pos
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(215, 233);
+            this.btnUpdate.Location = new System.Drawing.Point(264, 252);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(85, 27);
             this.btnUpdate.TabIndex = 18;
@@ -224,9 +223,9 @@ namespace pos
             // 
             this.panel3.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 281);
+            this.panel3.Location = new System.Drawing.Point(0, 299);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(717, 2);
+            this.panel3.Size = new System.Drawing.Size(613, 2);
             this.panel3.TabIndex = 23;
             // 
             // panel1
@@ -235,16 +234,16 @@ namespace pos
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(717, 2);
+            this.panel1.Size = new System.Drawing.Size(613, 2);
             this.panel1.TabIndex = 25;
             // 
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel4.Location = new System.Drawing.Point(715, 2);
+            this.panel4.Location = new System.Drawing.Point(611, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(2, 279);
+            this.panel4.Size = new System.Drawing.Size(2, 297);
             this.panel4.TabIndex = 26;
             // 
             // panel2
@@ -253,27 +252,13 @@ namespace pos
             this.panel2.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel2.Location = new System.Drawing.Point(0, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(2, 279);
+            this.panel2.Size = new System.Drawing.Size(2, 297);
             this.panel2.TabIndex = 27;
-            // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.SystemColors.HotTrack;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Image = global::pos.Properties.Resources.plus1;
-            this.button3.Location = new System.Drawing.Point(374, 108);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(29, 22);
-            this.button3.TabIndex = 15;
-            this.button3.UseVisualStyleBackColor = false;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // pictureBox1
             // 
             this.pictureBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox1.Location = new System.Drawing.Point(472, 48);
+            this.pictureBox1.Location = new System.Drawing.Point(384, 67);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(196, 179);
             this.pictureBox1.TabIndex = 0;
@@ -283,7 +268,7 @@ namespace pos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(717, 283);
+            this.ClientSize = new System.Drawing.Size(613, 301);
             this.ControlBox = false;
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
@@ -293,7 +278,6 @@ namespace pos
             this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.comboBoxSt);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.comboBoxCat);
             this.Controls.Add(this.button1);
@@ -305,6 +289,8 @@ namespace pos
             this.Controls.Add(this.pictureBox1);
             this.Cursor = System.Windows.Forms.Cursors.Default;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximumSize = new System.Drawing.Size(615, 303);
+            this.MinimumSize = new System.Drawing.Size(615, 303);
             this.Name = "Itemadd";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Itemadd_Load);
@@ -331,7 +317,6 @@ namespace pos
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.ComboBox comboBoxCat;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.ComboBox comboBoxSt;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnUpdate;

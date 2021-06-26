@@ -1,14 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.IO;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 
 
@@ -26,7 +21,7 @@ namespace pos
 
 
 
-        SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+
         public Itemadd()
         {
             InitializeComponent();
@@ -58,10 +53,11 @@ namespace pos
             btnUpdate.Focus();
             btnSave.Enabled = false;
             btnSave.Visible = false;
-            updateON = true;           
+            updateON = true;
         }
         public void LoadCategory()
         {
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
             try
             {
                 comboBoxCat.Items.Clear();
@@ -92,74 +88,49 @@ namespace pos
         }
 
 
-        
+
 
         private bool CheckItemExists()
         {
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
             bool exists = false;
             string Qry;
 
             if (updateON)
-            {
-                Qry = "select count(*) from items where item_name=@name and not Id=@Id";
-                SqlCommand cmd = new SqlCommand(Qry, con);
-                try
-                {
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@name", textBoxName.Text);
-                    cmd.Parameters.AddWithValue("@id", int.Parse(id));
-                    exists = (int)cmd.ExecuteScalar() > 0;
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                finally
-                {
-                    con.Close();
-                }
-                return exists;
-
-            }
-
-
+                Qry = "select count(*) from items where item_name=@name and not Id='" + id + "'";
             else
+                Qry = "select count(*) from items where item_name=@name ";
+            SqlCommand cmd = new SqlCommand(Qry, con);
+            try
             {
-                Qry = "select count(*) from items where item_name=@name";
-                SqlCommand cmd = new SqlCommand(Qry, con);
-                try
-                {
-                    con.Open();
-                    cmd.Parameters.AddWithValue("@name", textBoxName.Text);
-                    exists = (int)cmd.ExecuteScalar() > 0;
-                }
-
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                finally
-                {
-                    con.Close();
-                }
-                return exists;
-
+                con.Open();
+                cmd.Parameters.AddWithValue("@name", textBoxName.Text);
+                exists = (int)cmd.ExecuteScalar() > 0;
             }
 
-
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            finally
+            {
+                con.Close();
+            }
+            return exists;
         }
+
 
 
 
         private void SaveItem()
         {
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
             string Qry = "insert into items(item_name,item_price,item_category,item_status,item_image)values(@name,@price,@category,@status,@image)";
             SqlCommand cmd = new SqlCommand(Qry, con);
             var r = MessageBox.Show("Are you sure want to save?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-            
+
             try
-            {            
+            {
                 if (r == DialogResult.Yes)
                 {
                     MemoryStream ms = new MemoryStream();
@@ -199,6 +170,7 @@ namespace pos
 
         private void UpdateItem()
         {
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
             string Qry = "UPDATE items SET item_name = @name , item_price = @price , item_category = @category , item_status = @status , item_image = @image WHERE Id = @id";
             SqlCommand cmd = new SqlCommand(Qry, con);
             var r = MessageBox.Show("Are you sure want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -221,7 +193,7 @@ namespace pos
                     cmd.ExecuteNonQuery();
                     MessageBox.Show("Product Updated Successfully", "Confirm Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                    
+
                 }
             }
             catch (Exception ex)
@@ -234,28 +206,22 @@ namespace pos
                 con.Close();
                 if (r == DialogResult.Yes)
                 {
-                    var IL = Application.OpenForms.OfType<Itemlist>().FirstOrDefault();
-                    IL.Loaditems();
+                    var IL = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                    IL.LoadWhenAdd();
                     this.Dispose();
                 }
-               
+
             }
         }
 
         private void toolStripButton2_Click(object sender, EventArgs e)
         {
-            var IL = Application.OpenForms.OfType<Itemlist>().FirstOrDefault();
-            IL.Loaditems();
+            var IL = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+            IL.LoadWhenAdd();
             this.Dispose();
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-            pictureBox1.BackgroundImage = null;
-            itemcatgry IC = new itemcatgry();
-            IC.ShowDialog();
 
-        }
 
         private void Itemadd_Load(object sender, EventArgs e)
         {
@@ -327,7 +293,7 @@ namespace pos
 
         // ------------------------------------------<
         //  receive values from gridview on itemlistform, when clicked on the edit button
-       
+
         public string passname
         {
             get { return name; }
@@ -359,6 +325,7 @@ namespace pos
         {
             if (name != null)
             {
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
                 try
                 {
 
@@ -372,7 +339,7 @@ namespace pos
                         dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
                         MemoryStream ms = new MemoryStream(array);
                         Bitmap bitmap = new Bitmap(ms);
-                        pictureBox1.BackgroundImage=bitmap;
+                        pictureBox1.BackgroundImage = bitmap;
                     }
                     dr.Close();
                     pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
@@ -393,7 +360,7 @@ namespace pos
                 {
                     con.Close();
                 }
-               
+
             }
         }
 
@@ -410,14 +377,14 @@ namespace pos
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-                if (Validation())
-                {
-                    if (CheckItemExists())
-                        MessageBox.Show("Entered product name already exists !", "Product Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    else
-                        SaveItem();
-                }
-            
+            if (Validation())
+            {
+                if (CheckItemExists())
+                    MessageBox.Show("Entered product name already exists !", "Product Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                else
+                    SaveItem();
+            }
+
         }
     }
 }

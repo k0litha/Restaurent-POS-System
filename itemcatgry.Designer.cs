@@ -42,6 +42,7 @@ namespace pos
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.btnUpdate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.ep)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -53,7 +54,7 @@ namespace pos
             this.panelBar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panelBar.Location = new System.Drawing.Point(0, 0);
             this.panelBar.Name = "panelBar";
-            this.panelBar.Size = new System.Drawing.Size(487, 2);
+            this.panelBar.Size = new System.Drawing.Size(356, 2);
             this.panelBar.TabIndex = 11;
             // 
             // texBoxCat
@@ -101,7 +102,7 @@ namespace pos
             this.panel1.ForeColor = System.Drawing.SystemColors.ControlText;
             this.panel1.Location = new System.Drawing.Point(0, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(2, 134);
+            this.panel1.Size = new System.Drawing.Size(2, 142);
             this.panel1.TabIndex = 16;
             // 
             // panel2
@@ -109,9 +110,9 @@ namespace pos
             this.panel2.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel2.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel2.Location = new System.Drawing.Point(2, 134);
+            this.panel2.Location = new System.Drawing.Point(2, 142);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(485, 2);
+            this.panel2.Size = new System.Drawing.Size(354, 2);
             this.panel2.TabIndex = 17;
             // 
             // panel3
@@ -119,9 +120,9 @@ namespace pos
             this.panel3.BackColor = System.Drawing.SystemColors.ControlText;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
             this.panel3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.panel3.Location = new System.Drawing.Point(485, 2);
+            this.panel3.Location = new System.Drawing.Point(354, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2, 132);
+            this.panel3.Size = new System.Drawing.Size(2, 140);
             this.panel3.TabIndex = 18;
             // 
             // toolStrip1
@@ -136,7 +137,7 @@ namespace pos
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(2);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(483, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(352, 35);
             this.toolStrip1.TabIndex = 20;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -160,12 +161,27 @@ namespace pos
             this.toolStripButton1.Size = new System.Drawing.Size(23, 28);
             this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
+            // btnUpdate
+            // 
+            this.btnUpdate.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUpdate.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUpdate.ForeColor = System.Drawing.Color.White;
+            this.btnUpdate.Location = new System.Drawing.Point(137, 98);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(85, 27);
+            this.btnUpdate.TabIndex = 21;
+            this.btnUpdate.Text = "Update";
+            this.btnUpdate.UseVisualStyleBackColor = false;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
             // itemcatgry
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 136);
+            this.ClientSize = new System.Drawing.Size(356, 144);
             this.ControlBox = false;
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
@@ -176,6 +192,8 @@ namespace pos
             this.Controls.Add(this.panelBar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(2);
+            this.MaximumSize = new System.Drawing.Size(358, 146);
+            this.MinimumSize = new System.Drawing.Size(358, 146);
             this.Name = "itemcatgry";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             ((System.ComponentModel.ISupportInitialize)(this.ep)).EndInit();
@@ -198,5 +216,6 @@ namespace pos
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripLabel toolStripLabel1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.Button btnUpdate;
     }
 }
