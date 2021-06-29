@@ -1,19 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace pos
 {
     public partial class Login : Form
     {
-        bool loggedout=false;
+        bool offline = true;
         public Login()
         {
             InitializeComponent();
@@ -30,7 +23,7 @@ namespace pos
                 con.Open();
                 cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
                 cmd.Parameters.AddWithValue("@password", textBoxPassword.Text);
-                sucsess = (int)cmd.ExecuteScalar() >0;
+                sucsess = (int)cmd.ExecuteScalar() > 0;
             }
 
             catch (Exception ex)
@@ -47,12 +40,12 @@ namespace pos
         private string Permission()
         {
             SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
-            string perm="";
-            
+            string perm = "";
+
             try
             {
                 con.Open();
-                string Qry = "select permission from Users where username='"+ textBoxUsername.Text + "' and password='"+ textBoxPassword.Text +"'";
+                string Qry = "select permission from Users where username='" + textBoxUsername.Text + "' and password='" + textBoxPassword.Text + "'";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -104,39 +97,52 @@ namespace pos
         private void Status()
         {
 
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
 
-                try
-                {
-                    string Qry = "UPDATE Users SET status=@status where username=@username";
-                    SqlCommand cmd = new SqlCommand(Qry, con);
-                    con.Open();
+            try
+            {
+                string Qry = "UPDATE Users SET status=@status where username=@username";
+                SqlCommand cmd = new SqlCommand(Qry, con);
+                con.Open();
                 cmd.Parameters.AddWithValue("@username", textBoxUsername.Text);
-                if(!loggedout)
-                cmd.Parameters.AddWithValue("@status", "Online");
-                if (loggedout)
-                    cmd.Parameters.AddWithValue("@status", "Offline");
-                cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
+
+
+                if (offline)
                 {
-                    MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                    cmd.Parameters.AddWithValue("@status", "Online");
+                    cmd.ExecuteNonQuery();
                 }
 
-                finally
+                if (!offline)
                 {
-                    con.Close();
+
+                    cmd.Parameters.AddWithValue("@status", "Offline");
+                    cmd.ExecuteNonQuery();
                 }
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
 
+            finally
+            {
+                con.Close();
+            }
+        }
 
 
-                private void btnLogin_Click(object sender, EventArgs e)
+
+        private void btnLogin_Click(object sender, EventArgs e)
         {
             if (Validation())
             {
                 if (Authenticate())
                 {
+
                     Form1 F1 = new Form1
                     {
                         passuser = textBoxUsername.Text,
@@ -144,20 +150,25 @@ namespace pos
                     };
                     this.Hide();
                     Status();
-                    loggedout = true;
                     F1.ShowDialog();
+                    offline = false;
                     Status();
-                    loggedout = false;
-                    this.Dispose();
-                    
-                    
+                    textBoxUsername.Clear();
+                    textBoxPassword.Clear();
+                    offline = true;
+                    this.Show();
+
+
                 }
                 else
                     MessageBox.Show("Username or Password is incorrect. ", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-            
+
         }
 
-
+        private void Exit_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }

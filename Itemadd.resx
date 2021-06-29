@@ -123,10 +123,21 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>202, 21</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAD+SURBVEhLtZVLCsIwFEWzBUHBLTjppOsXxLETJ25BUHAH
+        bT2v5krFtM2nPVD6eEnObbShzmjbtmqa5tx13b5vFIBrh+fEVath8ieNjvutJMTkOK7e9eJWO4qjNYSf
+        sPVrorE1kgtz28CG69J3PAwk7WT45OLnQSmyQ2blgkZySLRcMBAdkiwXTJgNyZYLJo6GFMuFLQiJFpEL
+        Fv7tZEiRXCAIhiwiN0K/uUEv6pxMMiYXRSEsXO9PnnoVuaIPY5CY95w6LyTlENFLC0mRC8biQnLkgjnT
+        ISVywdzxEIp1P5ns4EBx940suWDtdye4HrirfsAKSyuRC3OY6yN37g0RLxIxcG165AAAAABJRU5ErkJg
+        gg==
+</value>
+  </data>
   <metadata name="ep.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>326, 21</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="ep.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAAMMOAADDDgAAAAAAAAAA

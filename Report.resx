@@ -117,30 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="lblAddUser.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5QYcCQQX97xGWgAAALhJREFU
-        SEvdlkEKgzAQRbPpBZqeoOBBam+otGcTu9X2DN2Y/o8Rskgwo5mFffBARPLEQaMhzrkLfMIP3MsbPqAN
-        F3/B0vTQMsA716JloMRjSTEyMM3HKkwMqCINfL3ZSAM1vM+HeUgDlTeb/w5wmDd4DTx5w3O8Jjn4tQCH
-        Gi4WC/CaTYEYx5pBDPWA+ovGYSYHGkMaEMOA+udafcPhBq1Fw4CF3KBL08Hz8mfBSAtHuJcBNhCLG/MD
-        eKa82hizuxYAAAAASUVORK5CYII=
-</value>
-  </data>
-  <data name="label3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6
-        JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAB3RJTUUH5QYaEzAXeEzM1wAAAgtJREFU
-        SEutlr1LllEYh7Mvo0RqexHKhlp0aJBqLSEIIhCCoo+xrX9AXOyLCIloaLCgRaEGh6ChhkaHiBrKIRSi
-        aGiJKIsyiep0/c75PT6PvM+bx3gvuFDu333f4Hmf87yuqSOE0IGH8Ta+wi+4gK9xCk9jp9tXB4P78Cmu
-        xFs85rE8GDiDi5o2+v0x3sQbeB/nscpV7PCK1tB0FH9rAn7iFdzqeAlqG/EcfsKCUcf10NCDX2NrCN9w
-        0FFL6NmNbzQAf/CAo2YIb8W2RPa50tuP3+NUCM+w+agobkE9IeKRy9kwczmNRva6XEJxKGWRIZezYWYH
-        6ojEJZdLKA6nLNL0oebAnO6HmHKphOL1lIUfLq0aZqfTijDtUgnFCymLf+Z/3U7mZuKGus+Q4tmURQZc
-        zoaZzVg8SeMul1DcmbLImMvZMHMijUaOu7wcgicpj5dsu8srQu8mnNUgfMQuR8shGIwtCV2Y+sYK9KzF
-        CQ2YEUf10FC9zS+x31ETZA18oEbzHDc4rkcN+FDd5hfq3X8K9Qrfg7qU46ijrPIB+7yqNTStw2uo5Tm8
-        8E/xHnd51b+hUS+xe1i8Yavola7viCPuPa+ieYe9cUkONHfiftTRnMSD2O14CWpjWKDXRo+j9sFSHW3B
-        HDYctQcW6h+FO9pu9CRuc9weWKiH5K62m4uO2gdL1+Mkfg4hHPoLzM5LNdnwN28AAAAASUVORK5CYII=
-</value>
-  </data>
 </root>

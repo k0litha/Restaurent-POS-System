@@ -9,6 +9,8 @@ namespace pos
 {
     public partial class UserAdd : Form
     {
+        bool exit = false;
+        string USER;
         string id;
         bool updateON;
         public UserAdd()
@@ -141,56 +143,75 @@ namespace pos
                 SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
                 string Qry = "UPDATE Users SET username=@username,fullname=@fullname,password=@password,address=@address,phone=@phone,email=@email,sex=@sex,permission=@permission,image=@image where id=@id";
                 SqlCommand cmd = new SqlCommand(Qry, con);
-                var r = MessageBox.Show("Are you sure want to update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (r == DialogResult.Yes)
+                bool del = true;
+                bool exit = false;
+                var F = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+                if (USER == F.SessionUser)
                 {
-                    try
+                    var y = MessageBox.Show("You are about to update your own user profile. You will have to login to the system again. press OK to continue.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (y == DialogResult.OK)
+                    { del = true; exit = true; }
+                    else
+                        del = false;
+
+                }
+                if (del)
+                {
+                    var r = MessageBox.Show("Are you sure want to update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (r == DialogResult.Yes)
                     {
+                        try
+                        {
 
-                        MemoryStream ms = new MemoryStream();
-                        pictureBox1.BackgroundImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
-                        byte[] arrImage = ms.ToArray();
+                            MemoryStream ms = new MemoryStream();
+                            pictureBox1.BackgroundImage.Save(ms, System.Drawing.Imaging.ImageFormat.Jpeg);
+                            byte[] arrImage = ms.ToArray();
 
-                        con.Open();
-                        cmd.Parameters.AddWithValue("@id", id);
-                        cmd.Parameters.AddWithValue("@username", textBoxUname.Text);
-                        cmd.Parameters.AddWithValue("@fullname", textBoxName.Text);
-                        cmd.Parameters.AddWithValue("@password", textBoxPwd.Text);
-                        cmd.Parameters.AddWithValue("@address", textBoxAdrs.Text);
-                        cmd.Parameters.AddWithValue("@phone", textBoxPhone.Text);
-                        cmd.Parameters.AddWithValue("@email", textBoxEmail.Text);
-
-
-                        if (rbMale.Checked)
-                            cmd.Parameters.AddWithValue("@sex", rbMale.Text);
-                        if (rbFemale.Checked)
-                            cmd.Parameters.AddWithValue("@sex", rbFemale.Text);
-                        if (rbOther.Checked)
-                            cmd.Parameters.AddWithValue("@sex", rbOther.Text);
+                            con.Open();
+                            cmd.Parameters.AddWithValue("@id", id);
+                            cmd.Parameters.AddWithValue("@username", textBoxUname.Text);
+                            cmd.Parameters.AddWithValue("@fullname", textBoxName.Text);
+                            cmd.Parameters.AddWithValue("@password", textBoxPwd.Text);
+                            cmd.Parameters.AddWithValue("@address", textBoxAdrs.Text);
+                            cmd.Parameters.AddWithValue("@phone", textBoxPhone.Text);
+                            cmd.Parameters.AddWithValue("@email", textBoxEmail.Text);
 
 
-                        if (rbAdmin.Checked)
-                            cmd.Parameters.AddWithValue("@permission", rbAdmin.Text);
-                        if (rbStd.Checked)
-                            cmd.Parameters.AddWithValue("@permission", rbStd.Text);
-
-                        cmd.Parameters.AddWithValue("@image", arrImage);
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("User Updated Successfully", "Confirm Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            if (rbMale.Checked)
+                                cmd.Parameters.AddWithValue("@sex", rbMale.Text);
+                            if (rbFemale.Checked)
+                                cmd.Parameters.AddWithValue("@sex", rbFemale.Text);
+                            if (rbOther.Checked)
+                                cmd.Parameters.AddWithValue("@sex", rbOther.Text);
 
 
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                            if (rbAdmin.Checked)
+                                cmd.Parameters.AddWithValue("@permission", rbAdmin.Text);
+                            if (rbStd.Checked)
+                                cmd.Parameters.AddWithValue("@permission", rbStd.Text);
 
-                    finally
-                    {
-                        con.Close();
-                        var IL = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                        IL.LoadWhenAdd();
-                        PassEditInfo();
+                            cmd.Parameters.AddWithValue("@image", arrImage);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("User Updated Successfully", "Confirm Update", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+
+                        finally
+                        {
+                            con.Close();
+                            if (exit)
+                                F.Dispose();
+                            else
+                            {
+                                F.LoadWhenAdd();
+                                PassEditInfo();
+                            }
+                        }
                     }
                 }
             }
@@ -204,31 +225,46 @@ namespace pos
                 SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
                 string Qry = "Delete from Users where id=@id";
                 SqlCommand cmd = new SqlCommand(Qry, con);
-                var r = MessageBox.Show("Are you sure want to delete user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                if (r == DialogResult.Yes)
+                bool del = true;
+                var F = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+
+                if (USER == F.SessionUser)
                 {
-                    try
+                    var y = MessageBox.Show("You are about to delete your own user profile. You will be no longer have access to the system. press OK to continue.", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Warning);
+                    if (y == DialogResult.OK)
+                    { del = true; exit = true; }
+                    else
+                        del = false;
+
+                }
+                if (del)
+                {
+                    var r = MessageBox.Show("Are you sure want to delete the selected user?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (r == DialogResult.Yes)
                     {
+                        try
+                        {
 
-                        con.Open();
-                        cmd.Parameters.AddWithValue("@id", id);
+                            con.Open();
+                            cmd.Parameters.AddWithValue("@id", id);
 
-                        cmd.ExecuteNonQuery();
-                        MessageBox.Show("User Deleted Successfully", "Confirm Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            cmd.ExecuteNonQuery();
+                            MessageBox.Show("User Deleted Successfully", "Confirm Delete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
 
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
 
-                    finally
-                    {
-                        con.Close();
-                        var IL = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-                        IL.LoadWhenAdd();
-                        this.Dispose();
+                        finally
+                        {
+                            con.Close();      
+                                F.LoadWhenAdd();
+                                this.Dispose();
+                           
+                        }
                     }
                 }
             }
@@ -302,7 +338,7 @@ namespace pos
                         textBoxPhone.Text = dr["phone"].ToString();
                         textBoxPwd.Text = dr["password"].ToString();
                         textBoxAdrs.Text = dr["address"].ToString();
-
+                        USER = dr["username"].ToString();
                         if (dr["sex"].ToString() == "Male")
                             rbMale.Checked = true;
                         if (dr["sex"].ToString() == "Female")
@@ -386,7 +422,7 @@ namespace pos
             if (Validation())
             {
                 if (CheckUserExists())
-                    MessageBox.Show("Entered Username already exists !", "Product Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Entered Username already exists !", "User Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                     UpdateUser();
             }
@@ -408,7 +444,7 @@ namespace pos
             if (Validation())
             {
                 if (CheckUserExists())
-                    MessageBox.Show("Entered product name already exists !", "Product Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Entered username name already exists !", "User Entry", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 else
                 {
                     SaveUser();
@@ -424,9 +460,13 @@ namespace pos
         private void button2_Click(object sender, EventArgs e)
         {
             DeleteUser();
-            var IL = Application.OpenForms.OfType<Form1>().FirstOrDefault();
-            IL.LoadWhenAdd();
+            var F = Application.OpenForms.OfType<Form1>().FirstOrDefault();
+            F.LoadWhenAdd();
             this.Dispose();
+            if (exit)
+                F.Dispose();
+
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)

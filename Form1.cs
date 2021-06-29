@@ -9,8 +9,9 @@ namespace pos
 {
     public partial class Form1 : Form
     {
-        string SessionUser="";
-        string SessionPerm="";
+
+        public string SessionUser="";
+        public string SessionPerm ="";
 
         List<string> pnamelist = new List<string>();
         List<string> qtylist = new List<string>();
@@ -35,14 +36,28 @@ namespace pos
         private Label name;
         private Button btnCategory, btnAll;
         private String Filter = "all";
+        System.Windows.Forms.Timer t = null;
 
 
-
+      
 
         public Form1()
         {
+            StartTimer();
             InitializeComponent();
+        }
 
+        private void StartTimer()
+        {
+            t = new System.Windows.Forms.Timer();
+            t.Interval = 1000;
+            t.Tick += new EventHandler(t_Tick);
+            t.Enabled = true;
+        }
+
+        void t_Tick(object sender, EventArgs e)
+        {
+            time_lbl.Text = DateTime.Now.ToString();
         }
 
         public string passuser
@@ -57,8 +72,8 @@ namespace pos
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            lbluser.Text = SessionUser;
+            lblTitle.Text = "Cashier";
+            lbluser.Text = ""+SessionPerm+" : "+SessionUser;
             itemlist1.Hide();
             GetData();
             ClearCart();
@@ -116,6 +131,11 @@ namespace pos
             comboBoxPayment.SelectedIndex = 0;
         }
 
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            GetData();
+        }
+
         public void GetData()
         {
             SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
@@ -125,9 +145,9 @@ namespace pos
                 con.Open();
                 string Qry;
                 if (Filter == "all")
-                    Qry = "SELECT item_image,Id, item_name, item_price FROM items Where item_status='Available' order by item_name";
+                    Qry = "SELECT item_image,Id, item_name, item_price FROM items Where item_status='Available' and item_name LIKE '" + textBox1.Text + "%' order by item_category";
                 else
-                    Qry = "SELECT item_image,Id, item_name, item_price FROM items Where item_status='Available' and item_category Like '" + Filter + "' order by item_name";
+                    Qry = "SELECT item_image,Id, item_name, item_price FROM items Where item_status='Available' and item_category='" + Filter + "' and item_name LIKE '" + textBox1.Text + "%' order by item_name";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
@@ -136,10 +156,11 @@ namespace pos
                     byte[] array = new byte[System.Convert.ToInt32(len) + 1];
                     dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
                     pic = new PictureBox();
-                    pic.Width = 170;
-                    pic.Height = 160;
+                    pic.Width = 150;
+                    pic.Height = 150;
                     pic.BackgroundImageLayout = ImageLayout.Stretch;
-                    pic.BorderStyle = BorderStyle.Fixed3D;
+                    pic.BorderStyle = BorderStyle.FixedSingle;
+                    pic.Margin = new Padding(10);
 
                     MemoryStream ms = new MemoryStream(array);
                     Bitmap bitmap = new Bitmap(ms);
@@ -155,6 +176,7 @@ namespace pos
                     price.Width = 60;
                     price.Height = 18;
                     price.TextAlign = ContentAlignment.MiddleCenter;
+                    price.Font = new Font("Segoe UI", 10);
 
                     //add name label  
                     name = new Label();
@@ -165,6 +187,7 @@ namespace pos
                     price.Height = 20;
                     name.TextAlign = ContentAlignment.MiddleCenter;
                     name.Tag = dr["Id"].ToString();
+                    name.Font= new Font("Segoe UI", 10);
 
                     flowLayoutPanel1.Controls.Add(pic);
                     pic.Controls.Add(name);
@@ -557,7 +580,7 @@ namespace pos
         public void GetTransNo()
         {
             if (Neworder)
-                lblTransNo.Text = DateTime.Now.ToString("yddMMHHmmss");
+                lblTransNo.Text = DateTime.Now.ToString("yHHddMMmmss");
         }
 
         private void ClearCart()
@@ -599,7 +622,8 @@ namespace pos
                 btnAll.TextAlign = ContentAlignment.MiddleCenter;
                 flowLayoutPanel2.Controls.Add(btnAll);
                 btnAll.Click += new EventHandler(Filter_Click);
-
+                btnAll.Margin = new Padding(8);
+                btnAll.Font = new Font("Segoe UI", 10);
 
                 con.Open();
                 string Qry = "SELECT * FROM category";
@@ -616,7 +640,8 @@ namespace pos
                     btnCategory.BackColor = Color.FromArgb(104, 33, 122);
                     btnCategory.ForeColor = Color.White;
                     btnCategory.TextAlign = ContentAlignment.MiddleCenter;
-
+                    btnCategory.Margin = new Padding(8);
+                    btnCategory.Font = new Font("Segoe UI", 10);
 
                     flowLayoutPanel2.Controls.Add(btnCategory);
 
@@ -653,21 +678,6 @@ namespace pos
                 GetData();
             }
         }
-
-
-        private void Itemslbl_Click(object sender, EventArgs e)
-        {
-            Itemadd f2 = new Itemadd();
-            f2.ShowDialog();
-        }
-
-        private void CLOSE_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
-        }
-
-
-
 
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
@@ -1200,7 +1210,7 @@ namespace pos
                     con.Open();
 
                     cmd.Parameters.AddWithValue("@transno", lblTransNo.Text);
-                    cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("MM/dd/yyyy hh:mm tt"));
+                    cmd.Parameters.AddWithValue("@datetime", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss:fff"));
                     cmd.Parameters.AddWithValue("@fulltotal", decimal.Parse(textBoxTotal.Text));
                     cmd.Parameters.AddWithValue("@payment_type", comboBoxPayment.Text);
                     cmd.Parameters.AddWithValue("@discount", decimal.Parse(textBoxDiscount.Text));
@@ -1392,10 +1402,14 @@ namespace pos
             Offset = Offset + lineheight10 + 10;
             layout = new RectangleF(new PointF(startX - 8, startY + Offset), layoutSizeLine);
             graphics.DrawString("Thank You! Come Again.", font11b, brush, layout, formatCenter);
+            
             font10.Dispose(); font11.Dispose(); font14.Dispose();
 
 
-
+            pnamelist.Clear();
+            qtylist.Clear();
+            requestlist.Clear();
+            totallist.Clear();
         }
 
 
@@ -1469,63 +1483,85 @@ namespace pos
 
         }
 
-        private void btnSalesReg_Click(object sender, EventArgs e)
+ 
+
+
+      
+
+        private void lblSaleReg_Click(object sender, EventArgs e)
         {
+            lblTitle.Text = "Cashier";
             invoices1.Hide();
+            report1.Hide();
             itemlist1.Hide();
             users1.Hide();
             GetData();
             LoadCategory();
-
         }
 
-        private void btnMngItm_Click(object sender, EventArgs e)
+        private void lblItems_Click(object sender, EventArgs e)
         {
-            
+            lblTitle.Text = "Products";
             itemlist1.Loaditems();
             itemlist1.BringToFront();
             itemlist1.Show();
             invoices1.Hide();
             users1.Hide();
-
+            report1.Hide();
         }
 
-        private void btnInvoices_Click(object sender, EventArgs e)
+        private void lblInvoices_Click(object sender, EventArgs e)
         {
-           
+            lblTitle.Text = "Invoices";
             invoices1.LoadInvoices();
             invoices1.BringToFront();
             invoices1.Show();
             itemlist1.Hide();
             users1.Hide();
-
-
+            report1.Hide();
         }
 
-        private void btnUsers_Click(object sender, EventArgs e)
+        private void lblSales_Click(object sender, EventArgs e)
+        {
+            lblTitle.Text = "Reports";
+            report1.Loaddata();
+            report1.BringToFront();
+            report1.Show();
+            invoices1.Hide();
+            users1.Hide();
+            itemlist1.Hide();
+        }
+
+        private void lblUsers_Click(object sender, EventArgs e)
         {
             if (SessionPerm == "Admin")
             {
+                lblTitle.Text = "Users";
                 users1.GetData();
                 users1.BringToFront();
                 users1.Show();
                 invoices1.Hide();
                 itemlist1.Hide();
+                report1.Hide();
             }
             else
             {
                 MessageBox.Show("You dont have administrator permission to enter.", "Permission Denied", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-
         }
 
-
-
+        private void lblLogout_Click(object sender, EventArgs e)
+        {
+          var r=  MessageBox.Show("Are you sure want logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+          if (r == DialogResult.Yes)
+                this.Dispose();
+        }
 
 
         //user control's  methods calling function
         public void LoadWhenAdd()
         {
+            GetData();
             itemlist1.LoadCategory();
             itemlist1.Loaditems();
             users1.GetData();

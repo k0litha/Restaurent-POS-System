@@ -8,6 +8,7 @@ namespace pos
 {
     public partial class Invoices : UserControl
     {
+        List<string> Searchbox = new List<string>();
         List<string> requestlist = new List<string>();
         List<string> pnamelist = new List<string>();
         List<string> qtylist = new List<string>();
@@ -35,16 +36,16 @@ namespace pos
                 dataGridView1.ClearSelection();
                 int i = 0;
                 con.Open();
-                string Qry = "SELECT * FROM Bill ORDER BY transno DESC";
+                string Qry = "SELECT * FROM Bill WHERE " + Searchbox[comboBoxSearch.SelectedIndex] + " LIKE '" + textBox1.Text + "%' ORDER BY Id DESC";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
                 while (dr.Read())
                 {
                     i += 1;
-                    dataGridView1.RowTemplate.Height = 30;
-                    dataGridView1.Rows.Add(i, dr["Id"].ToString(), dr["transno"].ToString(), dr["datetime"].ToString(), dr["payment_type"].ToString(), dr["payment"].ToString(), dr["discount"].ToString(), dr["fulltotal"].ToString(), dr["change"].ToString(), dr["order_type"].ToString(), dr["user"].ToString());
-
+                    dataGridView1.RowTemplate.Height = 40;
+                    dataGridView1.Rows.Add(i, dr["Id"].ToString(), dr["transno"].ToString(), dr["datetime"].ToString(), dr["payment_type"].ToString(), dr["payment"].ToString(), ""+dr["discount"].ToString()+"%", dr["fulltotal"].ToString(), dr["change"].ToString(), dr["order_type"].ToString(), dr["user"].ToString());
+                    
                 }
                 dr.Close();
 
@@ -60,6 +61,8 @@ namespace pos
             }
 
         }
+
+       
 
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -288,13 +291,28 @@ namespace pos
 
 
 
-
-
-
-
-
-
         private void Invoices_Load(object sender, EventArgs e)
+        {
+            
+            comboBoxSearch.Items.Add("Invoice No");
+            comboBoxSearch.Items.Add("Payment");
+            comboBoxSearch.Items.Add("Discount");
+            comboBoxSearch.Items.Add("Total");
+            comboBoxSearch.Items.Add("Change");
+            comboBoxSearch.Items.Add("Server");
+            comboBoxSearch.SelectedIndex = 0;
+            Searchbox.Add("transno");
+            Searchbox.Add("payment");
+            Searchbox.Add("discount");
+            Searchbox.Add("fulltotal");
+            Searchbox.Add("change");
+            Searchbox.Add("[user]");
+            LoadInvoices();
+        }
+
+       
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
             LoadInvoices();
         }

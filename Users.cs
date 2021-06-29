@@ -3,20 +3,35 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using System.Collections.Generic;
+
 
 namespace pos
 {
     public partial class Users : UserControl
     {
+        List<string> Searchbox = new List<string>();
         public Users()
         {
             InitializeComponent();
         }
 
         private void Users_Load(object sender, EventArgs e)
-        {
+        { 
+            comboBoxSearch.Items.Add("Username");
+            comboBoxSearch.Items.Add("Full Name");
+            comboBoxSearch.Items.Add("Permission");
+            comboBoxSearch.Items.Add("Satatus");
+
+            comboBoxSearch.SelectedIndex = 0;
+
+            Searchbox.Add("username");
+            Searchbox.Add("fullname");
+            Searchbox.Add("permission");
+            Searchbox.Add("status");
             GetData();
         }
+
 
 
         public void GetData()
@@ -27,11 +42,13 @@ namespace pos
             Panel pan;
             Label status;
             Label perm;
+            
+
             try
             {
                 flowLayoutPanel1.Controls.Clear();
                 con.Open();
-                string Qry = "SELECT image,Id,fullname,permission,status FROM users  order by permission";
+                string Qry = "SELECT image,Id,fullname,permission,status,username FROM users where " + Searchbox[comboBoxSearch.SelectedIndex] + " LIKE '" + textBoxsearch.Text + "%' order by permission";
 
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -56,7 +73,7 @@ namespace pos
                     pan.BorderStyle = BorderStyle.FixedSingle;
                     pan.BackColor = Color.FromArgb(149, 165, 166);
                     pan.Tag = dr["Id"].ToString();
-
+                    pan.Margin = new Padding(20);
 
                     MemoryStream ms = new MemoryStream(array);
                     Bitmap bitmap = new Bitmap(ms);
@@ -71,6 +88,7 @@ namespace pos
                     status.Tag = dr["Id"].ToString();
                     status.Width = 210;
                     status.Top = 2;
+                    status.Font = new Font("Segoe UI", 10);
 
                     if (dr["status"].ToString() == "Online")
                     {
@@ -85,22 +103,24 @@ namespace pos
 
 
                     perm = new Label();
-                    perm.Text = dr["permission"].ToString();
-                    perm.BackColor = Color.FromArgb(106, 80, 0);
+                    perm.Text = ""+ dr["username"].ToString() + " : "+dr["permission"].ToString();
+                    perm.BackColor = Color.FromArgb(142, 68, 173);
                     perm.ForeColor = Color.White;
                     perm.TextAlign = ContentAlignment.MiddleCenter;
                     perm.Tag = dr["Id"].ToString();
                     perm.Top = 233;
                     perm.Width = 210;
+                    perm.Font = new Font("Segoe UI", 10);
 
                     name = new Label();
                     name.Text = dr["fullname"].ToString();
-                    name.BackColor = Color.FromArgb(106, 80, 0);
+                    name.BackColor = Color.FromArgb(142, 68, 173);
                     name.ForeColor = Color.White;
                     name.Dock = DockStyle.Bottom;
                     name.TextAlign = ContentAlignment.MiddleCenter;
                     name.Tag = dr["Id"].ToString();
                     name.Width = 210;
+                    name.Font = new Font("Segoe UI", 10);
 
                     flowLayoutPanel1.Controls.Add(pan);
                     pan.Controls.Add(pic);
@@ -165,11 +185,16 @@ namespace pos
 
 
 
-        private void btnAddUser_Click(object sender, EventArgs e)
+        private void lblAddUser_Click(object sender, EventArgs e)
         {
             UserAdd UA = new UserAdd();
             UA.SaveEnabled();
             UA.ShowDialog();
+        }
+
+        private void textBoxsearch_TextChanged(object sender, EventArgs e)
+        {
+            GetData();
         }
 
     }

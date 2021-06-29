@@ -130,7 +130,7 @@ namespace pos
             this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripButton2.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton2.Image = global::pos.Properties.Resources.close1;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
             this.toolStripButton2.Size = new System.Drawing.Size(23, 30);
@@ -268,6 +268,7 @@ namespace pos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
             this.ClientSize = new System.Drawing.Size(613, 301);
             this.ControlBox = false;
             this.Controls.Add(this.toolStrip1);

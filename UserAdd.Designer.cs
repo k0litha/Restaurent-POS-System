@@ -30,6 +30,7 @@ namespace pos
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserAdd));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripButton2 = new System.Windows.Forms.ToolStripButton();
@@ -81,7 +82,7 @@ namespace pos
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Padding = new System.Windows.Forms.Padding(1);
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
-            this.toolStrip1.Size = new System.Drawing.Size(583, 35);
+            this.toolStrip1.Size = new System.Drawing.Size(574, 30);
             this.toolStrip1.TabIndex = 11;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -98,10 +99,10 @@ namespace pos
             this.toolStripButton2.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripButton2.Font = new System.Drawing.Font("Segoe UI", 11F);
             this.toolStripButton2.ForeColor = System.Drawing.SystemColors.Control;
-            this.toolStripButton2.Image = global::pos.Properties.Resources.close1;
+            this.toolStripButton2.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton2.Image")));
             this.toolStripButton2.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripButton2.Name = "toolStripButton2";
-            this.toolStripButton2.Size = new System.Drawing.Size(23, 30);
+            this.toolStripButton2.Size = new System.Drawing.Size(23, 25);
             this.toolStripButton2.Click += new System.EventHandler(this.toolStripButton2_Click);
             // 
             // pictureBox1
@@ -265,7 +266,7 @@ namespace pos
             this.btnUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnUpdate.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnUpdate.ForeColor = System.Drawing.Color.White;
-            this.btnUpdate.Location = new System.Drawing.Point(432, 525);
+            this.btnUpdate.Location = new System.Drawing.Point(432, 491);
             this.btnUpdate.Name = "btnUpdate";
             this.btnUpdate.Size = new System.Drawing.Size(119, 36);
             this.btnUpdate.TabIndex = 32;
@@ -279,7 +280,7 @@ namespace pos
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.ForeColor = System.Drawing.Color.White;
-            this.button2.Location = new System.Drawing.Point(307, 525);
+            this.button2.Location = new System.Drawing.Point(307, 491);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(119, 36);
             this.button2.TabIndex = 33;
@@ -347,7 +348,7 @@ namespace pos
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(432, 525);
+            this.btnSave.Location = new System.Drawing.Point(432, 491);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(119, 36);
             this.btnSave.TabIndex = 36;
@@ -361,7 +362,7 @@ namespace pos
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.Color.White;
-            this.btnEdit.Location = new System.Drawing.Point(432, 525);
+            this.btnEdit.Location = new System.Drawing.Point(432, 491);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(119, 36);
             this.btnEdit.TabIndex = 37;
@@ -375,11 +376,11 @@ namespace pos
             this.btnCansel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCansel.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCansel.ForeColor = System.Drawing.Color.White;
-            this.btnCansel.Location = new System.Drawing.Point(307, 525);
+            this.btnCansel.Location = new System.Drawing.Point(307, 491);
             this.btnCansel.Name = "btnCansel";
             this.btnCansel.Size = new System.Drawing.Size(119, 36);
             this.btnCansel.TabIndex = 38;
-            this.btnCansel.Text = "Cansel";
+            this.btnCansel.Text = "Cancel";
             this.btnCansel.UseVisualStyleBackColor = false;
             this.btnCansel.Click += new System.EventHandler(this.btnCansel_Click);
             // 
@@ -387,7 +388,8 @@ namespace pos
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Inherit;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(583, 573);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(149)))), ((int)(((byte)(165)))), ((int)(((byte)(166)))));
+            this.ClientSize = new System.Drawing.Size(574, 539);
             this.ControlBox = false;
             this.Controls.Add(this.btnCansel);
             this.Controls.Add(this.btnEdit);

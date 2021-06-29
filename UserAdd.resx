@@ -120,6 +120,18 @@
   <metadata name="toolStrip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="toolStripButton2.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAEDSURBVEhLtZVNCsIwEEZ7BUHBK7hx0/ML4tqNG68gKHiE
+        1jdtviI0SfPTPhhbJzNvGjXYGF3XnYlb3/fHIVEBngOeK9EqYfIPiZ7rs2aIyYmHc325tJa8WEK4gr3r
+        ScZ6JBfmtoUdcR8yDhaydkL99OTCvR8flJviIYtyQSJ7SLJcsJA8JFsuKFgcUiwXFAaHVMuFNfhEq8gF
+        jbOd/FMlFwi8Q1aRG4hmn7lBLumcRAnJRdUQGrf7kmkK/hSJ5MPoJSZ3JdFz4kr8pMgFubwhOXLBWtqQ
+        ErmgJj6kRi6oDQ/hZtu/TF5OxMsliuSC3mknuN7EeViwG8J2UiwX5jDXKG+aH61ZEv0v/QB1AAAAAElF
+        TkSuQmCC
+</value>
+  </data>
   <metadata name="openFileDialog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>122, 17</value>
   </metadata>

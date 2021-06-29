@@ -13,7 +13,15 @@ namespace pos
         {
             InitializeComponent();
         }
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            Loaditems();
+        }
 
+        private void textBox2_TextChanged(object sender, EventArgs e)
+        {
+            LoadCategory();
+        }
         public void Loaditems()
         {
             SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
@@ -24,7 +32,7 @@ namespace pos
                 dataGridView1.ClearSelection();
                 int i = 0;
                 con.Open();
-                string Qry = "SELECT * FROM items";
+                string Qry = "SELECT * FROM items where item_name LIKE '" + textBox1.Text + "%' order by item_category";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -77,7 +85,7 @@ namespace pos
                 dataGridView2.ClearSelection();
                 int i = 0;
                 con.Open();
-                string Qry = "SELECT * FROM Category";
+                string Qry = "SELECT * FROM Category where category LIKE '" + textboxcat.Text + "%'";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 SqlDataReader dr = cmd.ExecuteReader();
 
@@ -200,7 +208,7 @@ namespace pos
 
                 if (colname == "ColDelCat")
                 {
-                    MessageBox.Show("You are about to delete category '" + dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString() + "' from the database. This will resluts in lost of product items, that assigned to the corresponding ategory.", "Confirm Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("You are about to delete category '" + dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString() + "' from the database. This will results in lost of product items, that assigned to the corresponding category.", "Confirm Delete", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     var r = MessageBox.Show("Are you sure want to delete '" + dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString() + "' from the database? ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     if (r == DialogResult.Yes)
                     {
@@ -257,18 +265,21 @@ namespace pos
 
 
 
-        private void btnCreate_Click(object sender, EventArgs e)
+
+
+        private void lblAddCat_Click(object sender, EventArgs e)
+        {
+
+            itemcatgry IC = new itemcatgry();
+            IC.SaveEnabled();
+            IC.ShowDialog();
+        }
+
+        private void lblAddItem_Click(object sender, EventArgs e)
         {
             Itemadd IA = new Itemadd();
             IA.SaveEnabled();
             IA.ShowDialog();
-        }
-
-        private void bnAddCat_Click(object sender, EventArgs e)
-        {
-            itemcatgry IC = new itemcatgry();
-            IC.SaveEnabled();
-            IC.ShowDialog();
         }
     }
 
