@@ -124,11 +124,11 @@ namespace pos
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.lblTitle = new System.Windows.Forms.Label();
             this.itemlist1 = new pos.Itemlist();
             this.invoices1 = new pos.Invoices();
             this.users1 = new pos.Users();
             this.report1 = new pos.Report();
-            this.lblTitle = new System.Windows.Forms.Label();
             this.panelBottom.SuspendLayout();
             this.panelBar.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -560,7 +560,7 @@ namespace pos
             // lblTransNo
             // 
             this.lblTransNo.AutoSize = true;
-            this.lblTransNo.BackColor = System.Drawing.Color.SaddleBrown;
+            this.lblTransNo.BackColor = System.Drawing.Color.Maroon;
             this.lblTransNo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTransNo.ForeColor = System.Drawing.Color.White;
             this.lblTransNo.Location = new System.Drawing.Point(97, 12);
@@ -620,6 +620,7 @@ namespace pos
             this.textBoxSubTotal.Font = new System.Drawing.Font("Segoe UI Semibold", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxSubTotal.ForeColor = System.Drawing.Color.White;
             this.textBoxSubTotal.Location = new System.Drawing.Point(113, 32);
+            this.textBoxSubTotal.MaxLength = 327;
             this.textBoxSubTotal.Name = "textBoxSubTotal";
             this.textBoxSubTotal.ReadOnly = true;
             this.textBoxSubTotal.Size = new System.Drawing.Size(117, 27);
@@ -1210,6 +1211,17 @@ namespace pos
             this.dataGridViewImageColumn3.ReadOnly = true;
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(613, 2);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(66, 21);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "label11";
+            // 
             // itemlist1
             // 
             this.itemlist1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
@@ -1256,17 +1268,6 @@ namespace pos
             this.report1.Name = "report1";
             this.report1.Size = new System.Drawing.Size(1328, 728);
             this.report1.TabIndex = 33;
-            // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(613, 2);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(66, 21);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "label11";
             // 
             // Form1
             // 
