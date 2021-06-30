@@ -74,6 +74,7 @@ namespace pos
         {
             lblTitle.Text = "Cashier";
             lbluser.Text = ""+SessionPerm+" : "+SessionUser;
+            lblServer.Text = SessionUser;
             itemlist1.Hide();
             GetData();
             ClearCart();
@@ -170,24 +171,24 @@ namespace pos
                     //add price label 
                     price = new Label();
                     price.Text = dr["item_price"].ToString();
-                    price.BackColor = Color.FromArgb(106, 80, 167);
+                    price.BackColor = Color.FromArgb(68, 189, 50);
                     price.ForeColor = Color.White;
                     price.Tag = dr["Id"].ToString();
                     price.Width = 60;
                     price.Height = 18;
                     price.TextAlign = ContentAlignment.MiddleCenter;
-                    price.Font = new Font("Segoe UI", 10);
+                    price.Font = new Font("Segoe UI", 10, FontStyle.Bold);
 
                     //add name label  
                     name = new Label();
                     name.Text = dr["item_name"].ToString();
-                    name.BackColor = Color.FromArgb(106, 80, 167);
+                    name.BackColor = Color.FromArgb(68, 189, 50);
                     name.ForeColor = Color.White;
                     name.Dock = DockStyle.Bottom;
                     price.Height = 20;
                     name.TextAlign = ContentAlignment.MiddleCenter;
                     name.Tag = dr["Id"].ToString();
-                    name.Font= new Font("Segoe UI", 10);
+                    name.Font= new Font("Segoe UI", 10, FontStyle.Bold);
 
                     flowLayoutPanel1.Controls.Add(pic);
                     pic.Controls.Add(name);

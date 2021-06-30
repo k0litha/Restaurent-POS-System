@@ -43,22 +43,22 @@ namespace pos
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ButtonShadow;
-            this.label1.Location = new System.Drawing.Point(-1, 17);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 25.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ButtonFace;
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(294, 105);
+            this.label1.Size = new System.Drawing.Size(291, 105);
             this.label1.TabIndex = 0;
             this.label1.Text = "Resturent POS System";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnLogin
             // 
-            this.btnLogin.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.btnLogin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(189)))), ((int)(((byte)(50)))));
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.Color.White;
-            this.btnLogin.Location = new System.Drawing.Point(151, 277);
+            this.btnLogin.Location = new System.Drawing.Point(165, 254);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(77, 36);
             this.btnLogin.TabIndex = 3;
@@ -70,36 +70,36 @@ namespace pos
             // 
             this.label4.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label4.Location = new System.Drawing.Point(49, 138);
+            this.label4.Location = new System.Drawing.Point(48, 124);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(112, 23);
+            this.label4.Size = new System.Drawing.Size(112, 20);
             this.label4.TabIndex = 40;
             this.label4.Text = "Username";
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.Location = new System.Drawing.Point(53, 164);
+            this.textBoxUsername.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.Location = new System.Drawing.Point(52, 147);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(190, 27);
+            this.textBoxUsername.Size = new System.Drawing.Size(190, 25);
             this.textBoxUsername.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label2.Location = new System.Drawing.Point(49, 198);
+            this.label2.Location = new System.Drawing.Point(48, 187);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 23);
+            this.label2.Size = new System.Drawing.Size(112, 17);
             this.label2.TabIndex = 46;
             this.label2.Text = "Password";
             // 
             // textBoxPassword
             // 
-            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxPassword.Location = new System.Drawing.Point(53, 224);
+            this.textBoxPassword.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxPassword.Location = new System.Drawing.Point(52, 207);
             this.textBoxPassword.Name = "textBoxPassword";
-            this.textBoxPassword.Size = new System.Drawing.Size(190, 27);
+            this.textBoxPassword.Size = new System.Drawing.Size(190, 25);
             this.textBoxPassword.TabIndex = 2;
             // 
             // ep
@@ -110,9 +110,9 @@ namespace pos
             // 
             this.Exit.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(194)))), ((int)(((byte)(54)))), ((int)(((byte)(22)))));
             this.Exit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Exit.Font = new System.Drawing.Font("Segoe UI", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Exit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Exit.ForeColor = System.Drawing.Color.White;
-            this.Exit.Location = new System.Drawing.Point(68, 277);
+            this.Exit.Location = new System.Drawing.Point(52, 254);
             this.Exit.Name = "Exit";
             this.Exit.Size = new System.Drawing.Size(77, 36);
             this.Exit.TabIndex = 4;
@@ -125,7 +125,7 @@ namespace pos
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(47)))), ((int)(((byte)(54)))), ((int)(((byte)(64)))));
-            this.ClientSize = new System.Drawing.Size(297, 339);
+            this.ClientSize = new System.Drawing.Size(290, 317);
             this.ControlBox = false;
             this.Controls.Add(this.Exit);
             this.Controls.Add(this.label2);

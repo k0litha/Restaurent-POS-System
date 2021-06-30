@@ -55,6 +55,7 @@ namespace pos
             this.lblSaleReg = new System.Windows.Forms.Label();
             this.flowLayoutPanel2 = new System.Windows.Forms.FlowLayoutPanel();
             this.panelBar = new System.Windows.Forms.Panel();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.time_lbl = new System.Windows.Forms.Label();
             this.lbluser = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -74,7 +75,6 @@ namespace pos
             this.Colmax = new System.Windows.Forms.DataGridViewImageColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ColRequests = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lblTransNo = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.textBoxSubTotal = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -117,18 +117,20 @@ namespace pos
             this.btnNewOrder = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
             this.label = new System.Windows.Forms.Panel();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn3 = new System.Windows.Forms.DataGridViewImageColumn();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.lblTitle = new System.Windows.Forms.Label();
             this.itemlist1 = new pos.Itemlist();
             this.invoices1 = new pos.Invoices();
             this.users1 = new pos.Users();
             this.report1 = new pos.Report();
+            this.lblTransNo = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.lblServer = new System.Windows.Forms.Label();
             this.panelBottom.SuspendLayout();
             this.panelBar.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -280,6 +282,17 @@ namespace pos
             this.panelBar.Name = "panelBar";
             this.panelBar.Size = new System.Drawing.Size(1323, 29);
             this.panelBar.TabIndex = 6;
+            // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(613, 2);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(66, 21);
+            this.lblTitle.TabIndex = 2;
+            this.lblTitle.Text = "label11";
             // 
             // time_lbl
             // 
@@ -556,18 +569,6 @@ namespace pos
             this.ColRequests.Name = "ColRequests";
             this.ColRequests.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.ColRequests.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // lblTransNo
-            // 
-            this.lblTransNo.AutoSize = true;
-            this.lblTransNo.BackColor = System.Drawing.Color.Maroon;
-            this.lblTransNo.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTransNo.ForeColor = System.Drawing.Color.White;
-            this.lblTransNo.Location = new System.Drawing.Point(97, 12);
-            this.lblTransNo.Name = "lblTransNo";
-            this.lblTransNo.Size = new System.Drawing.Size(164, 25);
-            this.lblTransNo.TabIndex = 26;
-            this.lblTransNo.Text = "[ Place an order ]";
             // 
             // panel7
             // 
@@ -1137,22 +1138,12 @@ namespace pos
             this.label7.TabIndex = 17;
             this.label7.Text = "%";
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.BackColor = System.Drawing.Color.Maroon;
-            this.label8.Font = new System.Drawing.Font("Segoe UI", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.ForeColor = System.Drawing.Color.White;
-            this.label8.Location = new System.Drawing.Point(16, 12);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(81, 25);
-            this.label8.TabIndex = 73;
-            this.label8.Text = "Bill No :";
-            // 
             // label
             // 
             this.label.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(59)))), ((int)(((byte)(61)))));
             this.label.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.label.Controls.Add(this.label11);
+            this.label.Controls.Add(this.lblServer);
             this.label.Controls.Add(this.label8);
             this.label.Controls.Add(this.panel7);
             this.label.Controls.Add(this.lblTransNo);
@@ -1211,17 +1202,6 @@ namespace pos
             this.dataGridViewImageColumn3.ReadOnly = true;
             this.dataGridViewImageColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             // 
-            // lblTitle
-            // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(613, 2);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(66, 21);
-            this.lblTitle.TabIndex = 2;
-            this.lblTitle.Text = "label11";
-            // 
             // itemlist1
             // 
             this.itemlist1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(49)))), ((int)(((byte)(51)))));
@@ -1269,6 +1249,54 @@ namespace pos
             this.report1.Size = new System.Drawing.Size(1328, 728);
             this.report1.TabIndex = 33;
             // 
+            // lblTransNo
+            // 
+            this.lblTransNo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblTransNo.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTransNo.ForeColor = System.Drawing.Color.White;
+            this.lblTransNo.Location = new System.Drawing.Point(94, 12);
+            this.lblTransNo.Name = "lblTransNo";
+            this.lblTransNo.Size = new System.Drawing.Size(164, 25);
+            this.lblTransNo.TabIndex = 26;
+            this.lblTransNo.Text = "[ Place an order ]";
+            this.lblTransNo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label8
+            // 
+            this.label8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.ForeColor = System.Drawing.Color.White;
+            this.label8.Location = new System.Drawing.Point(16, 12);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(81, 25);
+            this.label8.TabIndex = 73;
+            this.label8.Text = "Bill No :";
+            this.label8.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.label11.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.Color.White;
+            this.label11.Location = new System.Drawing.Point(453, 12);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(81, 25);
+            this.label11.TabIndex = 75;
+            this.label11.Text = "Srever :";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblServer
+            // 
+            this.lblServer.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(67)))), ((int)(((byte)(74)))), ((int)(((byte)(84)))));
+            this.lblServer.Font = new System.Drawing.Font("Segoe UI", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServer.ForeColor = System.Drawing.Color.White;
+            this.lblServer.Location = new System.Drawing.Point(531, 12);
+            this.lblServer.Name = "lblServer";
+            this.lblServer.Size = new System.Drawing.Size(76, 25);
+            this.lblServer.TabIndex = 74;
+            this.lblServer.Text = "admin";
+            this.lblServer.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
@@ -1304,7 +1332,6 @@ namespace pos
             this.groupBox5.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.label.ResumeLayout(false);
-            this.label.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -1319,7 +1346,6 @@ namespace pos
         private System.Drawing.Printing.PrintDocument printDocument1;
         private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Label lblTransNo;
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Button btn20;
         private System.Windows.Forms.TextBox textBoxSubTotal;
@@ -1358,7 +1384,6 @@ namespace pos
         private System.Windows.Forms.ComboBox comboBoxToutDin;
         private System.Windows.Forms.Button btnCanselOrder;
         private System.Windows.Forms.ComboBox comboBoxPayment;
-        private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel label;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
@@ -1394,6 +1419,10 @@ namespace pos
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label time_lbl;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblServer;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblTransNo;
     }
 }
 
