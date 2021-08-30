@@ -40,7 +40,8 @@ namespace pos
             // 
             // flowLayoutPanel1
             // 
-            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.flowLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.AutoScroll = true;
             this.flowLayoutPanel1.AutoScrollMinSize = new System.Drawing.Size(3, 3);
@@ -55,6 +56,7 @@ namespace pos
             // 
             // lblAddUser
             // 
+            this.lblAddUser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lblAddUser.Image = ((System.Drawing.Image)(resources.GetObject("lblAddUser.Image")));
             this.lblAddUser.Location = new System.Drawing.Point(1280, 21);
             this.lblAddUser.Name = "lblAddUser";
@@ -64,6 +66,7 @@ namespace pos
             // 
             // label3
             // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label3.Image = ((System.Drawing.Image)(resources.GetObject("label3.Image")));
             this.label3.Location = new System.Drawing.Point(965, 19);
             this.label3.Name = "label3";
@@ -72,6 +75,7 @@ namespace pos
             // 
             // textBoxsearch
             // 
+            this.textBoxsearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxsearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxsearch.Location = new System.Drawing.Point(994, 26);
             this.textBoxsearch.Name = "textBoxsearch";
@@ -81,6 +85,7 @@ namespace pos
             // 
             // comboBoxSearch
             // 
+            this.comboBoxSearch.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBoxSearch.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBoxSearch.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.comboBoxSearch.FormattingEnabled = true;
@@ -110,7 +115,6 @@ namespace pos
             this.Controls.Add(this.label3);
             this.Controls.Add(this.textBoxsearch);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.MaximumSize = new System.Drawing.Size(1328, 728);
             this.MinimumSize = new System.Drawing.Size(1328, 728);
             this.Name = "Users";
             this.Size = new System.Drawing.Size(1326, 726);

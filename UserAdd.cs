@@ -9,6 +9,8 @@ namespace pos
 {
     public partial class UserAdd : Form
     {
+
+        string dblocation = "C:\\db\\pos.mdf";
         bool exit = false;
         string USER;
         string id;
@@ -66,7 +68,7 @@ namespace pos
         }
         private void SaveUser()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string Qry = "insert into Users(username,fullname,password,address,phone,email,sex,permission,image)values(@username,@fullname,@password,@address,@phone,@email,@sex,@permission,@image)";
             SqlCommand cmd = new SqlCommand(Qry, con);
             var r = MessageBox.Show("Are you sure want to save?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -140,7 +142,7 @@ namespace pos
             else
             {
 
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
                 string Qry = "UPDATE Users SET username=@username,fullname=@fullname,password=@password,address=@address,phone=@phone,email=@email,sex=@sex,permission=@permission,image=@image where id=@id";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 bool del = true;
@@ -222,7 +224,7 @@ namespace pos
         {
             if (CheckAdminCount())
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
                 string Qry = "Delete from Users where id=@id";
                 SqlCommand cmd = new SqlCommand(Qry, con);
                 bool del = true;
@@ -276,7 +278,7 @@ namespace pos
 
         private bool CheckAdminCount()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool enough = false;
             string Qry = "select count(*) from Users where permission='Admin' and not Id=@id";
             SqlCommand cmd = new SqlCommand(Qry, con);
@@ -316,7 +318,7 @@ namespace pos
             if (id != null)
             {
 
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
                 try
                 {
 
@@ -378,7 +380,7 @@ namespace pos
 
         private bool CheckUserExists()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool exists = false;
             string Qry;
 

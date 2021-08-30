@@ -9,6 +9,7 @@ namespace pos
     public partial class Itemlist : UserControl
     {
 
+        string dblocation = "C:\\db\\pos.mdf";
         public Itemlist()
         {
             InitializeComponent();
@@ -24,7 +25,7 @@ namespace pos
         }
         public void Loaditems()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 dataGridView1.DataSource = null;
@@ -77,7 +78,7 @@ namespace pos
         }
         public void LoadCategory()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 dataGridView2.DataSource = null;
@@ -123,7 +124,7 @@ namespace pos
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string colname = dataGridView1.Columns[e.ColumnIndex].Name.ToString();
             if (e.RowIndex >= 0)
             {
@@ -151,7 +152,7 @@ namespace pos
                 {
                     string Qry = "delete from items where Id=@id and item_name=@name";
                     SqlCommand cmd = new SqlCommand(Qry, con);
-                    var r = MessageBox.Show("You are about to delete category '" + dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString() + "' from the database.\n\nAre you sure ? ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    var r = MessageBox.Show("You are about to delete category '" + dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString() + "' from the database.\n\nAre you sure ? ", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                     try
                     {
                         if (r == DialogResult.Yes)
@@ -188,7 +189,7 @@ namespace pos
 
         private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string colname = dataGridView2.Columns[e.ColumnIndex].Name.ToString();
             if (e.RowIndex >= 0)
             {

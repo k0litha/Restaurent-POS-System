@@ -12,6 +12,7 @@ namespace pos
 
     public partial class Itemadd : Form
     {
+        string dblocation = "C:\\db\\pos.mdf";
         public string name;
         public string price;
         public string cat;
@@ -57,7 +58,7 @@ namespace pos
         }
         public void LoadCategory()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 comboBoxCat.Items.Clear();
@@ -92,7 +93,7 @@ namespace pos
 
         private bool CheckItemExists()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool exists = false;
             string Qry;
 
@@ -124,7 +125,7 @@ namespace pos
 
         private void SaveItem()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string Qry = "insert into items(item_name,item_price,item_category,item_status,item_image)values(@name,@price,@category,@status,@image)";
             SqlCommand cmd = new SqlCommand(Qry, con);
             var r = MessageBox.Show("Are you sure want to save?", "Confirm Save", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -170,7 +171,7 @@ namespace pos
 
         private void UpdateItem()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string Qry = "UPDATE items SET item_name = @name , item_price = @price , item_category = @category , item_status = @status , item_image = @image WHERE Id = @id";
             SqlCommand cmd = new SqlCommand(Qry, con);
             var r = MessageBox.Show("Are you sure want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
@@ -325,7 +326,7 @@ namespace pos
         {
             if (name != null)
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
                 try
                 {
 

@@ -10,6 +10,8 @@ namespace pos
     public partial class Form1 : Form
     {
 
+        string dblocation = "C:\\db\\pos.mdf";
+
         public string SessionUser="";
         public string SessionPerm ="";
 
@@ -45,6 +47,7 @@ namespace pos
         {
             StartTimer();
             InitializeComponent();
+          
         }
 
         private void StartTimer()
@@ -72,10 +75,14 @@ namespace pos
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            lblTitle.Text = "Cashier";
             lbluser.Text = ""+SessionPerm+" : "+SessionUser;
             lblServer.Text = SessionUser;
-            itemlist1.Hide();
+            lblSaleReg.BackColor = Color.FromArgb(74, 74, 74);
+            lblNormalscreen.Hide();
+            lblNormalscreen.Enabled = false;
+            lblFullscreen.Show();
+            lblFullscreen.Enabled = true;
+
             GetData();
             ClearCart();
             LoadCategory();
@@ -139,7 +146,7 @@ namespace pos
 
         public void GetData()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 flowLayoutPanel1.Controls.Clear();
@@ -157,11 +164,11 @@ namespace pos
                     byte[] array = new byte[System.Convert.ToInt32(len) + 1];
                     dr.GetBytes(0, 0, array, 0, System.Convert.ToInt32(len));
                     pic = new PictureBox();
-                    pic.Width = 150;
-                    pic.Height = 150;
+                    pic.Width = 148;
+                    pic.Height = 148;
                     pic.BackgroundImageLayout = ImageLayout.Stretch;
                     pic.BorderStyle = BorderStyle.FixedSingle;
-                    pic.Margin = new Padding(10);
+                    pic.Margin = new Padding(7);
 
                     MemoryStream ms = new MemoryStream(array);
                     Bitmap bitmap = new Bitmap(ms);
@@ -240,7 +247,7 @@ namespace pos
 
         public void Loaditems()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 dataGridView1.DataSource = null;
@@ -293,7 +300,7 @@ namespace pos
 
         private bool CheckItemExists()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool exists = true;
             string Qry = "select count(*) from Cart where pname=@name ";
             SqlCommand cmd = new SqlCommand(Qry, con);
@@ -317,7 +324,7 @@ namespace pos
 
         private bool CheckCartEmpty()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool CartCleared = false;
             string Qry = "select count(*) from Cart";
             SqlCommand cmd = new SqlCommand(Qry, con);
@@ -340,7 +347,7 @@ namespace pos
 
         private void GetQty()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
 
             try
             {
@@ -369,7 +376,7 @@ namespace pos
 
         private void PassItems(int x)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 con.Open();
@@ -452,7 +459,7 @@ namespace pos
 
         private string Total()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
 
             string Total = "0";
             string Qry = "select sum(total) from Cart";
@@ -483,7 +490,7 @@ namespace pos
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dataGridView1.EndEdit();
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string colname = dataGridView1.Columns[e.ColumnIndex].Name.ToString();
 
             if (colname == "Colmin")
@@ -586,7 +593,7 @@ namespace pos
 
         private void ClearCart()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string Qry = "delete from Cart";
             SqlCommand cmd = new SqlCommand(Qry, con);
             try
@@ -609,7 +616,7 @@ namespace pos
         }
         private void LoadCategory()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {   //all items button
                 flowLayoutPanel2.Controls.Clear();
@@ -683,7 +690,7 @@ namespace pos
 
         private void dataGridView1_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string colname = dataGridView1.Columns[e.ColumnIndex].Name.ToString();
 
             if (colname == "ColRequests")
@@ -1183,7 +1190,7 @@ namespace pos
 
             if (CheckCartEmpty())
             {
-                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+                SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
 
                 try
                 {
@@ -1417,7 +1424,7 @@ namespace pos
 
         private void printbill()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
 
             try
             {
@@ -1470,7 +1477,7 @@ namespace pos
                         x += 17;
                     }
                 }
-
+                i++;
             }
 
             printPreviewDialog1.Document = printDocument1;
@@ -1491,7 +1498,11 @@ namespace pos
 
         private void lblSaleReg_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Cashier";
+            lblSaleReg.BackColor = Color.FromArgb(74, 74, 74);
+            lblItems.BackColor = Color.FromArgb(50, 49, 51);
+            lblInvoices.BackColor = Color.FromArgb(50, 49, 51);
+            lblSales.BackColor = Color.FromArgb(50, 49, 51);
+            lblUsers.BackColor = Color.FromArgb(50, 49, 51);
             invoices1.Hide();
             report1.Hide();
             itemlist1.Hide();
@@ -1502,7 +1513,11 @@ namespace pos
 
         private void lblItems_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Products";
+            lblItems.BackColor = Color.FromArgb(74, 74, 74);
+            lblSaleReg.BackColor = Color.FromArgb(50, 49, 51);
+            lblInvoices.BackColor = Color.FromArgb(50, 49, 51);
+            lblSales.BackColor = Color.FromArgb(50, 49, 51);
+            lblUsers.BackColor = Color.FromArgb(50, 49, 51);
             itemlist1.Loaditems();
             itemlist1.BringToFront();
             itemlist1.Show();
@@ -1513,7 +1528,11 @@ namespace pos
 
         private void lblInvoices_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Invoices";
+            lblInvoices.BackColor = Color.FromArgb(74, 74, 74);
+            lblSaleReg.BackColor = Color.FromArgb(50, 49, 51);
+            lblItems.BackColor = Color.FromArgb(50, 49, 51);
+            lblSales.BackColor = Color.FromArgb(50, 49, 51);
+            lblUsers.BackColor = Color.FromArgb(50, 49, 51);
             invoices1.LoadInvoices();
             invoices1.BringToFront();
             invoices1.Show();
@@ -1524,7 +1543,12 @@ namespace pos
 
         private void lblSales_Click(object sender, EventArgs e)
         {
-            lblTitle.Text = "Reports";
+            lblSales.BackColor = Color.FromArgb(74, 74, 74);
+            lblSaleReg.BackColor = Color.FromArgb(50, 49, 51);
+            lblItems.BackColor = Color.FromArgb(50, 49, 51);
+            lblInvoices.BackColor = Color.FromArgb(50, 49, 51);
+            lblUsers.BackColor = Color.FromArgb(50, 49, 51);
+
             report1.Loaddata();
             report1.BringToFront();
             report1.Show();
@@ -1537,7 +1561,12 @@ namespace pos
         {
             if (SessionPerm == "Admin")
             {
-                lblTitle.Text = "Users";
+                lblUsers.BackColor = Color.FromArgb(74, 74, 74);
+                lblSaleReg.BackColor = Color.FromArgb(50, 49, 51);
+                lblItems.BackColor = Color.FromArgb(50, 49, 51);
+                lblInvoices.BackColor = Color.FromArgb(50, 49, 51);
+                lblSales.BackColor = Color.FromArgb(50, 49, 51);
+                
                 users1.GetData();
                 users1.BringToFront();
                 users1.Show();
@@ -1556,6 +1585,43 @@ namespace pos
           var r=  MessageBox.Show("Are you sure want logout?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
           if (r == DialogResult.Yes)
                 this.Dispose();
+        }
+
+       
+
+        private void lblFullscreen_Click(object sender, EventArgs e)
+        {
+
+            this.WindowState = FormWindowState.Maximized;
+            int w = (int)(((double)this.Width / (double)1400) * (double)1328);
+            int h = (int)(((double)this.Height / (double)760) * (double)728);
+            itemlist1.MinimumSize = new Size(w, h);
+            report1.MinimumSize = new Size(w, h);
+            users1.MinimumSize = new Size(w, h);
+            invoices1.MinimumSize = new Size(w, h);
+            lblFullscreen.Hide();
+            lblFullscreen.Enabled = false;
+            lblNormalscreen.Show();
+            lblNormalscreen.Enabled = true;
+        }
+
+        private void lblNormalscreen_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Normal;
+
+            itemlist1.MinimumSize = new Size(1328, 728);
+            report1.MinimumSize = new Size(1328, 728);
+            users1.MinimumSize = new Size(1328, 728);
+            invoices1.MinimumSize = new Size(1328, 728);
+            lblNormalscreen.Hide();
+            lblNormalscreen.Enabled = false;
+            lblFullscreen.Show();
+            lblFullscreen.Enabled = true;
+        }
+
+        private void lblMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
         }
 
 

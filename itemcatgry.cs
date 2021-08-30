@@ -7,7 +7,7 @@ namespace pos
 {
     public partial class itemcatgry : Form
     {
-
+        string dblocation = "C:\\db\\pos.mdf";
         bool updateON;
         string cat;
         string id;
@@ -32,7 +32,7 @@ namespace pos
 
         private void SaveCatgry()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string Qry = "insert into Category(category)values(@category)";
             SqlCommand cmd = new SqlCommand(Qry, con);
 
@@ -62,7 +62,7 @@ namespace pos
 
         private void UpdateCategory()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             var r = MessageBox.Show("Are you sure want to Update?", "Confirm Update", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (r == DialogResult.Yes)
             {
@@ -117,7 +117,7 @@ namespace pos
         private bool CheckCatgryExists()
         {
             string Qry;
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             if (updateON)
                 Qry = "select count(*) from Category where category=@cat and not Id='" + id + "'";
             else

@@ -8,6 +8,7 @@ namespace pos
 {
     public partial class Invoices : UserControl
     {
+        string dblocation = "C:\\db\\pos.mdf";
         List<string> Searchbox = new List<string>();
         List<string> requestlist = new List<string>();
         List<string> pnamelist = new List<string>();
@@ -28,7 +29,7 @@ namespace pos
         }
         public void LoadInvoices()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             try
             {
                 dataGridView1.DataSource = null;
@@ -67,7 +68,7 @@ namespace pos
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string colname = dataGridView1.Columns[e.ColumnIndex].Name.ToString();
             if (e.RowIndex >= 0)
             {
@@ -274,7 +275,7 @@ namespace pos
                         x += 17;
                     }
                 }
-
+                i++;
             }
 
 

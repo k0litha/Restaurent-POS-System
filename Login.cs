@@ -7,6 +7,7 @@ namespace pos
     public partial class Login : Form
     {
         bool offline = true;
+        string dblocation = "C:\\db\\pos.mdf";
         public Login()
         {
             InitializeComponent();
@@ -14,7 +15,7 @@ namespace pos
 
         private bool Authenticate()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename="+ dblocation + ";Integrated Security = True; Connect Timeout = 30");
             bool sucsess = false;
             string Qry = "select count(*) from Users where username=@username and password=@password";
             SqlCommand cmd = new SqlCommand(Qry, con);
@@ -39,7 +40,7 @@ namespace pos
 
         private string Permission()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             string perm = "";
 
             try
@@ -97,7 +98,7 @@ namespace pos
         private void Status()
         {
 
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
 
             try
             {

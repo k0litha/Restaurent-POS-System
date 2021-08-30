@@ -10,6 +10,8 @@ namespace pos
 {
     public partial class Users : UserControl
     {
+
+        string dblocation = "C:\\db\\pos.mdf";
         List<string> Searchbox = new List<string>();
         public Users()
         {
@@ -36,7 +38,7 @@ namespace pos
 
         public void GetData()
         {
-            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=D:\C#pos\db\pos.mdf;Integrated Security = True; Connect Timeout = 30");
+            SqlConnection con = new SqlConnection(@"Data Source = (LocalDB)\MSSQLLocalDB; AttachDbFilename=" + dblocation + ";Integrated Security = True; Connect Timeout = 30");
             PictureBox pic;
             Label name;
             Panel pan;
